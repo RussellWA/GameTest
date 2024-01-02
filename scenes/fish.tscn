@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj4meay28hwhl"]
+
+[ext_resource type="PackedScene" uid="uid://56ca7p78jom5" path="res://scenes/collectible.tscn" id="1_emxrb"]
+[ext_resource type="Texture2D" uid="uid://dvp1st0cbdrwo" path="res://sprites/fishes/fish.png" id="2_7ukvl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x0ym"]
+size = Vector2(13, 12)
+
+[node name="collectible" instance=ExtResource("1_emxrb")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_3x0ym")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_7ukvl")
+
+[connection signal="collected" from="." to="." method="_on_collected"]
