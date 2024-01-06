@@ -188,8 +188,8 @@ limit_right = 512
 limit_bottom = 100
 limit_smoothed = true
 
-[node name="collectible" parent="." instance=ExtResource("6_c2xlo")]
-position = Vector2(56, 26)
-
 [node name="fishing area" parent="." instance=ExtResource("7_8ryax")]
 position = Vector2(406, 90)
+
+[node name="collectible" parent="." instance=ExtResource("6_c2xlo")]
+position = Vector2(56, 123)

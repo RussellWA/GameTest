@@ -10,3 +10,4 @@ script = ExtResource("1_p7bsc")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="collected" from="." to="." method="_on_collected"]

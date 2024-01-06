@@ -6,6 +6,8 @@ var curr_dir = "none"
 var is_mov = 0
 var input_vector = Vector2.ZERO
 
+@export var inventory: Inv
+
 func _ready():
 	$AnimatedSprite2D.play("idle_front")
 
@@ -82,3 +84,6 @@ func play_anim(movement):
 		elif movement == 0:
 			anim.play("idle_front")
 
+func _on_area_2d_area_entered(area):
+	if area.has_method("collect"):
+		area.collect(inventory)

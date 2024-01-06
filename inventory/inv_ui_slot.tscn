@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://g5t6dryegkgh"]
+
+[ext_resource type="Texture2D" uid="uid://bitocfac1pvlx" path="res://sprites/bucket/Bucket Slot.png" id="1_gdwvj"]
+[ext_resource type="Script" path="res://inventory/inv_ui_slot.gd" id="1_x28lj"]
+
+[node name="inv_UI_slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(25, 25)
+offset_right = 25.0
+offset_bottom = 25.0
+script = ExtResource("1_x28lj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(12.5, 12.5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_gdwvj")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
