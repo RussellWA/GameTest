@@ -29,31 +29,33 @@ func move_player(): #Determines the direction the player is moving
 		velocity = input_vector
 	move_and_slide() 
 
-func face_player(): #Determines the direction the player is facing
-	var input_v
-	if input_vector.x == 0:
-		if Input.is_action_pressed("up"):
-			curr_dir = "up"
-			is_mov = 1
-			if Input.is_action_pressed("down"):
-				is_mov = 0
-		elif Input.is_action_pressed("down"):
-			curr_dir = "down"
-			is_mov = 1
-			if Input.is_action_pressed("up"):
-				is_mov = 0
-		else:
-			is_mov = 0
-	elif Input.is_action_pressed("left"):
-			curr_dir = "left"
-			is_mov = 1
-			if Input.is_action_pressed("right"):
-				is_mov = 0
-	elif Input.is_action_pressed("right"):	
+func face_player():
+	if input_vector == Vector2.ZERO:
+		is_mov = 0
+	else:
+		is_mov = 1
+
+	if input_vector.x != 0 && input_vector.y != 0:
+		if input_vector.x > 0 && input_vector.y > 0:
+			curr_dir = "downright"
+		elif input_vector.x > 0 && input_vector.y < 0:
+			curr_dir = "upright"
+		elif input_vector.x < 0 && input_vector.y > 0:
+			curr_dir = "downleft"
+		elif input_vector.x < 0 && input_vector.y < 0:
+			curr_dir = "upleft"
+
+	elif input_vector.x != 0 && input_vector.y == 0:
+		if input_vector.x > 0:
 			curr_dir = "right"
-			is_mov = 1
-			if Input.is_action_pressed("left"):
-				is_mov = 0
+		else:
+			curr_dir = "left"
+
+	elif input_vector.y != 0 && input_vector.x == 0:
+		if input_vector.y > 0:
+			curr_dir = "down"
+		else:
+			curr_dir = "up"
 
 func play_anim(movement):
 	var anim = $AnimatedSprite2D
