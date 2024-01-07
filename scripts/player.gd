@@ -3,70 +3,80 @@ extends CharacterBody2D
 const speed = 70
 
 var curr_dir = "none"
+var is_mov = 0
+var input_vector = Vector2.ZERO
 
 func _ready():
 	$AnimatedSprite2D.play("idle_front")
 
 func _physics_process(delta):
-	player_movement(delta)
+	move_player()
+	face_player()
+	play_anim(is_mov)
 
-func player_movement(delta):
+func move_player(): #Determines the direction the player is moving
+	input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	input_vector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	
-	if Input.is_action_pressed("left"):
-		curr_dir = "left"
-		play_anim(1)
-		velocity.x = -speed
-		velocity.y = 0
+	input_vector = input_vector.normalized()
 	
-	elif Input.is_action_pressed("right"):
-		curr_dir = "right"
-		play_anim(1)
-		velocity.x = speed
-		velocity.y = 0
-	
-	elif Input.is_action_pressed("up"):
-		curr_dir = "up"
-		play_anim(1)
-		velocity.y = -speed
-		velocity.x = 0
-	
-	elif Input.is_action_pressed("down"):
-		curr_dir = "down"
-		play_anim(1)
-		velocity.y = speed
-		velocity.x = 0
+	if input_vector:
+		velocity = input_vector * speed
 	else:
-		play_anim(0)
-		velocity.x = 0
-		velocity.y = 0
-		
-	move_and_slide()
+		velocity = input_vector
+	move_and_slide() 
+
+func face_player(): #Determines the direction the player is facing
+	var input_v
+	if input_vector.x == 0:
+		if Input.is_action_pressed("up"):
+			curr_dir = "up"
+			is_mov = 1
+			if Input.is_action_pressed("down"):
+				is_mov = 0
+		elif Input.is_action_pressed("down"):
+			curr_dir = "down"
+			is_mov = 1
+			if Input.is_action_pressed("up"):
+				is_mov = 0
+		else:
+			is_mov = 0
+	elif Input.is_action_pressed("left"):
+			curr_dir = "left"
+			is_mov = 1
+			if Input.is_action_pressed("right"):
+				is_mov = 0
+	elif Input.is_action_pressed("right"):	
+			curr_dir = "right"
+			is_mov = 1
+			if Input.is_action_pressed("left"):
+				is_mov = 0
 
 func play_anim(movement):
-	var dir = curr_dir
 	var anim = $AnimatedSprite2D
 	
-	if dir == "right":
+	if curr_dir == "right":
 		anim.flip_h = false
 		if movement == 1:
 			anim.play("walk_side")
 		elif movement == 0:
 			anim.play("idle_side")
 	
-	elif dir == "left":
+	elif curr_dir == "left":
 		anim.flip_h = true
 		if movement == 1:
 			anim.play("walk_side")
 		elif movement == 0:
 			anim.play("idle_side")
 	
-	elif dir == "up":
+	elif curr_dir == "up":
 		if movement == 1:
 			anim.play("walk_back")
 		elif movement == 0:
 			anim.play("idle_back")
 	
-	elif dir == "down":
+	elif curr_dir == "down":
 		if movement == 1:
 			anim.play("walk_front")
 		elif movement == 0:
