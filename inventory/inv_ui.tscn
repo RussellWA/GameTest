@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsx6xk6c354ib"]
+[gd_scene load_steps=3 format=3 uid="uid://dsx6xk6c354ib"]
 
 [ext_resource type="Script" path="res://inventory/Inv_UI.gd" id="1_suheu"]
 [ext_resource type="Texture2D" uid="uid://xlkkwwexe3w8" path="res://sprites/bucket/Bucket Background.png" id="2_dailt"]
-[ext_resource type="PackedScene" uid="uid://g5t6dryegkgh" path="res://inventory/inv_ui_slot.tscn" id="3_lep0i"]
 
 [node name="Inv_UI" type="Control"]
 custom_minimum_size = Vector2(66, 66)
@@ -36,15 +35,3 @@ offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
-
-[node name="inv_UI_slot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lep0i")]
-layout_mode = 2
-
-[node name="inv_UI_slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lep0i")]
-layout_mode = 2
-
-[node name="inv_UI_slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lep0i")]
-layout_mode = 2
-
-[node name="inv_UI_slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lep0i")]
-layout_mode = 2

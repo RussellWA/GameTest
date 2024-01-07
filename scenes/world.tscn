@@ -192,4 +192,16 @@ limit_smoothed = true
 position = Vector2(406, 90)
 
 [node name="collectible" parent="." instance=ExtResource("6_c2xlo")]
-position = Vector2(56, 123)
+position = Vector2(112, 56)
+
+[node name="collectible2" parent="." instance=ExtResource("6_c2xlo")]
+position = Vector2(144, 59)
+
+[node name="collectible3" parent="." instance=ExtResource("6_c2xlo")]
+position = Vector2(174, 56)
+
+[node name="collectible4" parent="." instance=ExtResource("6_c2xlo")]
+position = Vector2(201, 55)
+
+[node name="collectible5" parent="." instance=ExtResource("6_c2xlo")]
+position = Vector2(226, 55)

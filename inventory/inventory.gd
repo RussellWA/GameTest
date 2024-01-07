@@ -5,15 +5,19 @@ class_name Inv
 signal updated
 
 @export var items: Array[InvItem]
-
-func _init(size = 4):
-	for i in range(size):
-		items.push_back(null)
+@export var max_weight = 15
 
 func insert(item: InvItem):
-	for i in range(items.size()):
-		if !items[i]:
-			items[i] = item
-			break
+	var total_weight = 0
+	for fish in items:
+		if fish:
+			total_weight += item.weight
+	
+	if total_weight + item.weight <= max_weight:
+		items.push_back(item)
+		updated.emit()
+		return true
+	else:
+		return false
 	
 	updated.emit()

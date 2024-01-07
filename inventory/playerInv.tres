@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_4wim0")
-items = Array[Resource("res://inventory/inventory_item.gd")]([null, null, null, null])
+items = Array[Resource("res://inventory/inventory_item.gd")]([])
+max_weight = 15
