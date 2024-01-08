@@ -95,3 +95,5 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_area_exited(area):
 	if area.has_method("fishnt"):
 		area.fishnt()
+
+
