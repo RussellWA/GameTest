@@ -3,9 +3,11 @@
 [ext_resource type="Script" path="res://scripts/fishing_area.gd" id="1_okwrp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p53nd"]
+size = Vector2(61, 59)
 
 [node name="fishing area" type="Area2D"]
 script = ExtResource("1_okwrp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-20.5, 19.5)
 shape = SubResource("RectangleShape2D_p53nd")

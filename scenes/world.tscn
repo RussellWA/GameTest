@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://3e2r7vkloocc"]
+[gd_scene load_steps=15 format=3 uid="uid://3e2r7vkloocc"]
 
+[ext_resource type="Script" path="res://scripts/fishScript.gd" id="1_457fo"]
 [ext_resource type="PackedScene" uid="uid://bepe45rrf58i1" path="res://scenes/player.tscn" id="1_xu5ax"]
 [ext_resource type="Texture2D" uid="uid://cb48tsfwhev5q" path="res://sprites/tilesets (1)/grass.png" id="2_421tp"]
 [ext_resource type="Texture2D" uid="uid://cc7r2ss2ngu07" path="res://sprites/objects/objects.png" id="3_3fxg0"]
@@ -7,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://batnrbcroyogb" path="res://sprites/Tilesets (2)/Water.png" id="4_5t1x4"]
 [ext_resource type="PackedScene" uid="uid://dj4meay28hwhl" path="res://scenes/fish.tscn" id="6_c2xlo"]
 [ext_resource type="PackedScene" uid="uid://dcitdm0hdpr3d" path="res://scenes/fishing_area.tscn" id="7_8ryax"]
+[ext_resource type="PackedScene" uid="uid://dwde5hsw84xes" path="res://scenes/fishing_GUI.tscn" id="8_n2nyg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vhtmg"]
 texture = ExtResource("2_421tp")
@@ -158,6 +160,7 @@ sources/3 = SubResource("TileSetAtlasSource_oncop")
 
 [node name="world" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_457fo")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -188,8 +191,8 @@ limit_right = 512
 limit_bottom = 100
 limit_smoothed = true
 
-[node name="fishing area" parent="." instance=ExtResource("7_8ryax")]
-position = Vector2(406, 90)
+[node name="fishingArea" parent="." instance=ExtResource("7_8ryax")]
+position = Vector2(440, 82)
 
 [node name="collectible" parent="." instance=ExtResource("6_c2xlo")]
 position = Vector2(112, 56)
@@ -205,3 +208,15 @@ position = Vector2(201, 55)
 
 [node name="collectible5" parent="." instance=ExtResource("6_c2xlo")]
 position = Vector2(226, 55)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -608.0
+
+[node name="FishingGui" parent="CanvasLayer/CenterContainer" instance=ExtResource("8_n2nyg")]
+position = Vector2(263, 182)

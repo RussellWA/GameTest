@@ -89,3 +89,9 @@ func play_anim(movement):
 func _on_area_2d_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
+	elif area.has_method("fishy"):
+		area.fishy()
+		
+func _on_area_2d_area_exited(area):
+	if area.has_method("fishnt"):
+		area.fishnt()
